@@ -30,6 +30,7 @@ Line wrap the file at 100 chars.                                              Th
 - Add option to connect to WireGuard relays over IPv6.
 - Add Burmese translations.
 - Preserve log of old daemon instance when upgrading on Desktop.
+- Support WireGuard over TCP for custom VPN relays.
 
 #### Android
 - Allow reaching the API server when connecting, disconnecting or in a blocked state.
