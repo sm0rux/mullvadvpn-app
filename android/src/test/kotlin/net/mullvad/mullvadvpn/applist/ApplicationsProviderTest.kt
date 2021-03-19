@@ -41,7 +41,7 @@ class ApplicationsProviderTest {
 
         val result = testSubject.getAppsList()
         val expected = listOf(
-            AppData(launchWithInternetPackageName, 0, launchWithInternetPackageName)
+            AppInfo(launchWithInternetPackageName, 0, launchWithInternetPackageName)
         )
 
         assertLists(expected, result)

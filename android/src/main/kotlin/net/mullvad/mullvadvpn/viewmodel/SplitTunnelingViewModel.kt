@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import net.mullvad.mullvadvpn.R
-import net.mullvad.mullvadvpn.applist.AppData
+import net.mullvad.mullvadvpn.applist.AppInfo
 import net.mullvad.mullvadvpn.applist.ApplicationsProvider
 import net.mullvad.mullvadvpn.applist.ViewIntent
 import net.mullvad.mullvadvpn.model.ListItemData
@@ -31,8 +31,8 @@ class SplitTunnelingViewModel(
 
     private val intentFlow = MutableSharedFlow<ViewIntent>()
     private val isUIReady = CompletableDeferred<Unit>()
-    private val excludedApps: MutableMap<String, AppData> = mutableMapOf()
-    private val notExcludedApps: MutableMap<String, AppData> = mutableMapOf()
+    private val excludedApps: MutableMap<String, AppInfo> = mutableMapOf()
+    private val notExcludedApps: MutableMap<String, AppInfo> = mutableMapOf()
 
     private val defaultListItems: List<ListItemData> = listOf(
         createTextItem(R.string.split_tunneling_description)
@@ -122,7 +122,7 @@ class SplitTunnelingViewModel(
         listItemsSink.emit(listItems)
     }
 
-    private fun createApplicationItem(appData: AppData, checked: Boolean): ListItemData =
+    private fun createApplicationItem(appData: AppInfo, checked: Boolean): ListItemData =
         ListItemData.build(appData.packageName) {
             type = ListItemData.APPLICATION
             text = appData.name

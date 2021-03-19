@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runBlockingTest
 import net.mullvad.mullvadvpn.R
 import net.mullvad.mullvadvpn.TestCoroutineRule
-import net.mullvad.mullvadvpn.applist.AppData
+import net.mullvad.mullvadvpn.applist.AppInfo
 import net.mullvad.mullvadvpn.applist.ApplicationsProvider
 import net.mullvad.mullvadvpn.applist.ViewIntent
 import net.mullvad.mullvadvpn.assertLists
@@ -78,8 +78,8 @@ class SplitTunnelingViewModelTest {
 
     @Test
     fun test_apps_list_delivered() = runBlockingTest(testCoroutineRule.testDispatcher) {
-        val appExcluded = AppData("test.excluded", 0, "testName1")
-        val appNotExcluded = AppData("test.not.excluded", 0, "testName2")
+        val appExcluded = AppInfo("test.excluded", 0, "testName1")
+        val appNotExcluded = AppInfo("test.not.excluded", 0, "testName2")
         every { mockedSplitTunneling.excludedAppList } returns listOf(appExcluded.packageName)
 
         initTestSubject(listOf(appExcluded, appNotExcluded))
@@ -105,7 +105,7 @@ class SplitTunnelingViewModelTest {
 
     @Test
     fun test_remove_app_from_excluded() = runBlockingTest(testCoroutineRule.testDispatcher) {
-        val app = AppData("test", 0, "testName")
+        val app = AppInfo("test", 0, "testName")
         every { mockedSplitTunneling.excludedAppList } returns listOf(app.packageName)
         every { mockedSplitTunneling.includeApp(app.packageName) } just Runs
 
@@ -144,7 +144,7 @@ class SplitTunnelingViewModelTest {
 
     @Test
     fun test_add_app_to_excluded() = runBlockingTest(testCoroutineRule.testDispatcher) {
-        val app = AppData("test", 0, "testName")
+        val app = AppInfo("test", 0, "testName")
         every { mockedSplitTunneling.excludedAppList } returns emptyList()
         every { mockedSplitTunneling.excludeApp(app.packageName) } just Runs
         initTestSubject(listOf(app))
@@ -180,7 +180,7 @@ class SplitTunnelingViewModelTest {
         }
     }
 
-    private fun initTestSubject(appList: List<AppData>) {
+    private fun initTestSubject(appList: List<AppInfo>) {
         every { mockedApplicationsProvider.getAppsList() } returns appList
         testSubject = SplitTunnelingViewModel(
             mockedApplicationsProvider,
@@ -190,7 +190,7 @@ class SplitTunnelingViewModelTest {
     }
 
     private fun createApplicationItem(
-        appData: AppData,
+        appData: AppInfo,
         checked: Boolean
     ): ListItemData = ListItemData.build(appData.packageName) {
         type = ListItemData.APPLICATION
