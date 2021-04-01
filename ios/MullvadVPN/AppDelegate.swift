@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var rootContainer: RootContainerViewController?
+    var router: Router?
+    var routeHandler: RouteHandler?
 
     #if targetEnvironment(simulator)
     let simulatorTunnelProvider = SimulatorTunnelProviderHost()
@@ -48,6 +50,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchController.view.backgroundColor = .primaryColor
         self.window?.rootViewController = launchController
 
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            self.routeHandler = PhoneRouteHandler(window: self.window!)
+        case .pad:
+            self.routeHandler = PadRouteHandler(window: self.window!)
+        default:
+            fatalError()
+        }
+
+        self.router = Router(routeHandler: self.routeHandler!)
+        self.router?.delegate = self
+
         // Update relays
         RelayCache.shared.updateRelays()
 
@@ -58,17 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if case .failure(let error) = result {
                     fatalError(error.displayChain(message: "Failed to load the tunnel for account"))
                 }
-
-                switch UIDevice.current.userInterfaceIdiom {
-                case .pad:
-                    self.startPadInterfaceFlow()
-
-                case .phone:
-                    self.startPhoneInterfaceFlow()
-
-                default:
-                    fatalError()
-                }
+                self.router?.navigate(to: self.nextRoute())
             }
         }
 
@@ -82,6 +86,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         TunnelManager.shared.refreshTunnelState(completionHandler: nil)
+    }
+
+
+    private func nextRoute() -> Route {
+        if !Account.shared.isAgreedToTermsOfService {
+            return .consent
+        } else if !Account.shared.isLoggedIn {
+            return .login
+        } else {
+            return .connect
+        }
     }
 
     private func startPadInterfaceFlow() {
@@ -182,6 +197,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Account.shared.startPaymentMonitoring(with: paymentManager)
     }
 
+}
+
+extension AppDelegate: RouterDelegate {
+    func router(_ router: Router, willTransition context: RouteTransition, completion: @escaping () -> Void) {
+        switch (context.source, context.destination) {
+        case (.connect, .login):
+            let controller = context.destinationController as? LoginViewController
+            controller?.reset()
+            break
+        default:
+            break
+        }
+    }
 }
 
 extension AppDelegate: RootContainerViewControllerDelegate {

@@ -130,6 +130,7 @@
 		588D2FE3248AC27F00E313F7 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E973DD24850EB600096F90 /* AsyncOperation.swift */; };
 		58906DE02445C7A5002F0673 /* NEProviderStopReason+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58906DDF2445C7A5002F0673 /* NEProviderStopReason+Debug.swift */; };
 		58907D9524D17B4E00CFC3F5 /* DisconnectSplitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58907D9424D17B4E00CFC3F5 /* DisconnectSplitButton.swift */; };
+		5890C81B2615BBDE00439ED3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890C81A2615BBDE00439ED3 /* Router.swift */; };
 		5891BF1C25E3E3EB006D6FB0 /* Bundle+ProductVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891BF1B25E3E3EB006D6FB0 /* Bundle+ProductVersion.swift */; };
 		5891BF5125E66B1E006D6FB0 /* UIBarButtonItem+KeyboardNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891BF5025E66B1E006D6FB0 /* UIBarButtonItem+KeyboardNavigation.swift */; };
 		5896AE7E246ACE65005B36CB /* KeychainAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FAEDEB245059F000CB0F5B /* KeychainAttributes.swift */; };
@@ -227,7 +228,6 @@
 		58FD5BF024238EB300112C88 /* SKProduct+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD5BEF24238EB300112C88 /* SKProduct+Formatting.swift */; };
 		58FD5BF22424F7D700112C88 /* UserInterfaceInteractionRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD5BF12424F7D700112C88 /* UserInterfaceInteractionRestriction.swift */; };
 		58FD5BF42428C67600112C88 /* InAppPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD5BF32428C67600112C88 /* InAppPurchaseButton.swift */; };
-		58FEEB58260B662E00A621A8 /* AutomaticKeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEEB57260B662E00A621A8 /* AutomaticKeyboardResponder.swift */; };
 		58FEEB46260A028D00A621A8 /* GeoJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEEB45260A028D00A621A8 /* GeoJSON.swift */; };
 		58FEEB58260B662E00A621A8 /* AutomaticKeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEEB57260B662E00A621A8 /* AutomaticKeyboardResponder.swift */; };
 /* End PBXBuildFile section */
@@ -349,6 +349,7 @@
 		5888AD86227B17950051EB06 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		58906DDF2445C7A5002F0673 /* NEProviderStopReason+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEProviderStopReason+Debug.swift"; sourceTree = "<group>"; };
 		58907D9424D17B4E00CFC3F5 /* DisconnectSplitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectSplitButton.swift; sourceTree = "<group>"; };
+		5890C81A2615BBDE00439ED3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5891BF1B25E3E3EB006D6FB0 /* Bundle+ProductVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ProductVersion.swift"; sourceTree = "<group>"; };
 		5891BF5025E66B1E006D6FB0 /* UIBarButtonItem+KeyboardNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+KeyboardNavigation.swift"; sourceTree = "<group>"; };
 		5894E725236B2801008A2793 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -424,7 +425,6 @@
 		58FD5BEF24238EB300112C88 /* SKProduct+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Formatting.swift"; sourceTree = "<group>"; };
 		58FD5BF12424F7D700112C88 /* UserInterfaceInteractionRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceInteractionRestriction.swift; sourceTree = "<group>"; };
 		58FD5BF32428C67600112C88 /* InAppPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseButton.swift; sourceTree = "<group>"; };
-		58FEEB57260B662E00A621A8 /* AutomaticKeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticKeyboardResponder.swift; sourceTree = "<group>"; };
 		58FEEB45260A028D00A621A8 /* GeoJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoJSON.swift; sourceTree = "<group>"; };
 		58FEEB57260B662E00A621A8 /* AutomaticKeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticKeyboardResponder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -579,14 +579,17 @@
 				58DF28A42417CB4B00E836B0 /* AppStorePaymentManager.swift */,
 				58FD5BE624192A2B00112C88 /* AppStoreReceipt.swift */,
 				58CE5E6A224146210008646E /* Assets.xcassets */,
+				58FEEB57260B662E00A621A8 /* AutomaticKeyboardResponder.swift */,
 				588534BD246193C00018B744 /* AutomaticKeyRotationManager.swift */,
 				589AB4F6227B64450039131E /* BasicTableViewCell.swift */,
+				5891BF1B25E3E3EB006D6FB0 /* Bundle+ProductVersion.swift */,
 				58F840B12464491D0044E708 /* ChainedError.swift */,
 				58A1AA8B23F5584B009F7EA6 /* ConnectionPanelView.swift */,
-				58CCA00F224249A1004F3011 /* ConnectViewController.swift */,
 				58B43C1825F77DB60002C8C3 /* ConnectMainContentView.swift */,
+				58CCA00F224249A1004F3011 /* ConnectViewController.swift */,
 				58A99ED2240014A0006599E9 /* ConsentViewController.swift */,
 				58AB9DEB2501040C006C5526 /* ConsentViewController.xib */,
+				5871FB95254ADE4E0051A0A4 /* ConsolidatedApplicationLog.swift */,
 				5896AE83246D5889005B36CB /* CustomDateComponentsFormatting.swift */,
 				582BB1B0229569620055B6EF /* CustomNavigationBar.swift */,
 				58293FB625138B88005D0BB5 /* CustomNavigationController.swift */,
@@ -610,8 +613,10 @@
 				58FAEDFE24533A7000CB0F5B /* KeychainReturn.swift */,
 				58CE5E6C224146210008646E /* LaunchScreen.storyboard */,
 				58A1AA8623F43901009F7EA6 /* Location.swift */,
+				583DA21325FA4B5C00318683 /* LocationDataSource.swift */,
 				58BA692D23E99EFF009DC256 /* Locking.swift */,
 				5815039F24D6ECF200C9C50E /* Logging */,
+				58B993B02608A34500BA7811 /* LoginContentView.swift */,
 				58CE5E65224146200008646E /* LoginViewController.swift */,
 				58C3B06624EA768100C0348E /* LogStreamerViewController.swift */,
 				58CE5E67224146200008646E /* Main.storyboard */,
@@ -626,14 +631,15 @@
 				583BC70624FE4DC400C9DE04 /* Optional+DispatchQueue.swift */,
 				5845F841236CBACD00B2D93C /* PacketTunnelIpc.swift */,
 				58C6B35322BB87C4003C19AD /* PrivateKeyWithMetadata.swift */,
-				5871FB95254ADE4E0051A0A4 /* ConsolidatedApplicationLog.swift */,
-				58293FAC2510CA58005D0BB5 /* ProblemReportViewController.swift */,
 				58F8AC0D25D3F8CE002BE0ED /* ProblemReportReviewViewController.swift */,
+				58EF580A25D69D7A00AEBA94 /* ProblemReportSubmissionOverlayView.swift */,
+				58293FAC2510CA58005D0BB5 /* ProblemReportViewController.swift */,
 				58BFA5C522A7C97F00A6173D /* RelayCache.swift */,
 				58781CC822AE7CA8009B9D8E /* RelayConstraints.swift */,
 				58781CD422AFBA39009B9D8E /* RelaySelector.swift */,
 				5888AD7E2279B6BF0051EB06 /* RelayStatusIndicatorView.swift */,
 				587425C02299833500CA2045 /* RootContainerViewController.swift */,
+				5890C81A2615BBDE00439ED3 /* Router.swift */,
 				5888AD82227B11080051EB06 /* SelectLocationCell.swift */,
 				5857F24224C8662600CF6F47 /* SelectLocationHeaderView.swift */,
 				5857F24624C882D700CF6F47 /* SelectLocationNavigationController.swift */,
@@ -647,26 +653,21 @@
 				58FD5BEF24238EB300112C88 /* SKProduct+Formatting.swift */,
 				58F19E34228C15BA00C7710B /* SpinnerActivityIndicatorView.swift */,
 				581CBCED229826FD00727D7F /* StaticTableViewDataSource.swift */,
+				58EF581025D69DB400AEBA94 /* StatusImageView.swift */,
 				5807E2BF2432038B00F5FF30 /* String+Split.swift */,
 				5871FB8225498CA20051A0A4 /* Swizzle.swift */,
 				5862805322428EF100F5A6E1 /* TranslucentButtonBlurView.swift */,
 				5835B7CB233B76CB0096D79F /* TunnelManager.swift */,
 				587AD7C523421D7000E93A53 /* TunnelSettings.swift */,
 				58AEEF6A2344A46200C9BBD5 /* TunnelSettingsManager.swift */,
+				5891BF5025E66B1E006D6FB0 /* UIBarButtonItem+KeyboardNavigation.swift */,
 				587CBFE222807F530028DED3 /* UIColor+Helpers.swift */,
 				58CCA0152242560B004F3011 /* UIColor+Palette.swift */,
+				585CA70E25F8C44600B47C62 /* UIMetrics.swift */,
 				58FD5BF12424F7D700112C88 /* UserInterfaceInteractionRestriction.swift */,
 				58B8743122B25A7600015324 /* WireguardAssociatedAddresses.swift */,
 				5877152F23981F7B001F8237 /* WireguardKeysViewController.swift */,
 				58B9814D24FEA70D00C0D59E /* WireguardKeysViewController.xib */,
-				58EF580A25D69D7A00AEBA94 /* ProblemReportSubmissionOverlayView.swift */,
-				58EF581025D69DB400AEBA94 /* StatusImageView.swift */,
-				5891BF5025E66B1E006D6FB0 /* UIBarButtonItem+KeyboardNavigation.swift */,
-				5891BF1B25E3E3EB006D6FB0 /* Bundle+ProductVersion.swift */,
-				585CA70E25F8C44600B47C62 /* UIMetrics.swift */,
-				583DA21325FA4B5C00318683 /* LocationDataSource.swift */,
-				58B993B02608A34500BA7811 /* LoginContentView.swift */,
-				58FEEB57260B662E00A621A8 /* AutomaticKeyboardResponder.swift */,
 			);
 			path = MullvadVPN;
 			sourceTree = "<group>";
@@ -1079,6 +1080,7 @@
 				58B43C1925F77DB60002C8C3 /* ConnectMainContentView.swift in Sources */,
 				58561C99239A5D1500BD6B5E /* IPEndpoint.swift in Sources */,
 				58FD5BF22424F7D700112C88 /* UserInterfaceInteractionRestriction.swift in Sources */,
+				5890C81B2615BBDE00439ED3 /* Router.swift in Sources */,
 				5811DE50239014550011EB53 /* NEVPNStatus+Debug.swift in Sources */,
 				58141EC924DAC0ED0013F79C /* TextFileStream.swift in Sources */,
 				58C3A4B222456F1B00340BDB /* AccountInputGroupView.swift in Sources */,
